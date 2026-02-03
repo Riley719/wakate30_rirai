@@ -187,7 +187,8 @@
 #author
 
 #figure(
-  image("../to_git.png", width: 5.6em)
+  image("../to_git.png", width: 4.1em),
+  caption: "資料へのリンク（GitHub）"
 )
 
 #pagebreak()
@@ -448,6 +449,8 @@ $
 ]
 
 #pagebreak()
+
+#set page(header: none)
 
 #align(center + horizon)[
   #text(size: 3em)[Thank you!]
