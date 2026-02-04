@@ -110,67 +110,67 @@
   box-name: "axiom",
   box-display: "Axiom",
   title-color: black,
-  box-color: rgb("#FFCCCC")
+  box-color: rgb("#FF6666")
 )
 #newstatementsp(
   box-name: "def",
   box-display: "Def",
   title-color: black,
-  box-color: rgb("#FFCCCC")
+  box-color: rgb("#FF6666")
 )
 #newstatementsp(
   box-name: "th",
   box-display: "Th",
   title-color: black,
-  box-color: rgb("#B380FF")
+  box-color: rgb("#7733FF")
 )
 #newstatementsp(
   box-name: "prop",
   box-display: "Prop",
   title-color: black,
-  box-color: rgb("#CCCCFF")
+  box-color: rgb("#6666FF")
 )
 #newstatementsp(
   box-name: "lem",
   box-display: "Lem",
   title-color: black,
-  box-color: rgb("#CCCCFF")
+  box-color: rgb("#6666FF")
 )
 #newstatementsp(
   box-name: "cor",
   box-display: "Cor",
   title-color: black,
-  box-color: rgb("#CCCCFF")
+  box-color: rgb("#6666FF")
 )
 #newstatementsp(
   box-name: "rem",
   box-display: "Rem",
   title-color: black,
-  box-color: rgb("#FFFF99")
+  box-color: rgb("#FFFF33")
 )
 #newstatementsp(
   box-name: "ex",
   box-display: "Example",
-  title-color: black,
-  box-color: rgb("#CCCCCC")
+  title-color: white,
+  box-color: rgb("#333333")
 )
 #newstatementsp(
   box-name: "exer",
   box-display: "演習",
   title-color: black,
-  box-color: rgb("#CCCCCC")
+  box-color: rgb("#666666")
 )
 #newstatementsp(
   box-name: "qu",
   box-display: "Question",
   title-color: black,
-  box-color: rgb("#CCFFCC")
+  box-color: rgb("#66FF66")
 )
 #newstatementsp(
   box-name: "fact",
   box-display: "Fact",
   title-color: black,
-  box-color: rgb("#CCCCFF")
+  box-color: rgb("#00A000")
 )
 
 
@@ -216,7 +216,9 @@
   $
     dim(A) = d(A) = delta(A)
   $
-  $dim(A)$:$A$のクルル次元，$d(A)$:$A$の随伴次数環$gr_frak(m) (A)$のポアンカレ級数$P(t)$の$t=1$での極の位数，$delta(A)$:$A$の$frak(m)$準素イデアルの生成系の最小個数．
+  $dim(A)$:$A$のクルル次元 \ 
+  $d(A)$:$A$の随伴次数環$gr_frak(m) (A)$のポアンカレ級数$P(t)$の$t=1$での極の位数 \ 
+  $delta(A)$:$A$の$frak(m)$準素イデアルの生成系の最小個数．
 ]
 
 #pagebreak()
@@ -231,7 +233,9 @@
   $
     dim_gr (R) = d(R) = s(R)
   $
-  $dim_gr (R)$:$R$の斉次クルル次元，$d(R)$:$R$のポアンカレ級数$P_R (t)$の$t=1$での極の位数，$s(R)$:$S = k[x_1,dots, x_s] subset R$が部分次数環として有限になるような最小の$s$．
+  $dim_gr (R)$:$R$の斉次クルル次元 \ 
+  $d(R)$:$R$のポアンカレ級数$P_R (t)$の$t=1$での極の位数 \ 
+  $s(R)$:$S = k[x_1,dots, x_s] subset R$が部分次数環として有限になるような最小の$s$．
 ]
 
 #pagebreak()
@@ -261,6 +265,8 @@
 )[
   $S$の多項式の集合$cal(F) subset S$に対して，そのイニシャル多項式の集合$ini(cal(F)) = {ini(f) | f in cal(F)}$が$k$上に$ini(S)$を生成するとき，$cal(F)$を$S$の*Sagbi基底*という．
 ]
+
+Subalgebra Analogue to Gr\u{00F6}bner Bases for Idealsの略．
 
 有限なSagbi基底を持つとは限らない！
 
@@ -292,6 +298,18 @@
 
 #pagebreak()
 
+#showybox[
+  ```
+  Macaulay2, version 1.25.11
+  Type "help" to see useful commands
+
+  i1 : load "computesagbi.m2"
+  (Partial SAGBIBasis Computation Object with 8 generators, Limit = 7., false, | x+y+z xy xy2 xy3+xy2z xy4+x2y2z+2xy3z+xy2z2 x2y3z xy5+x3y2z+3xy4z+2x2y2z2+3xy3z2+xy2z3 xy6+x4y2z+x2y4z+4xy5z+3x3y2z2+4x2y3z2+6xy4z2+3x2y2z3+4xy3z3+xy2z4 |)
+  ```
+]
+
+#pagebreak()
+
 #statementsp(
   box-name: "fact",
   box-title: "",
@@ -308,7 +326,7 @@
 $
   dim_gr (ini(S)) = d(ini(S)) = d(S) = dim_gr (S)
 $
-しかもネーター次数環なら$dim(R) = dim_gr (R)$なので$dim(S) = dim_(ini(S))$である．
+しかもネーター次数環なら$dim(R) = dim_gr (R)$なので$dim(S) = dim(ini(S))$である．
 
 この手法を使うため，Smokeの次元定理を拡張したいという動機が生まれる．
 
@@ -349,6 +367,26 @@ $
   $
     dim_gr (R) <= dim(R) <= trdeg_k (R) = GKdim(R) <= d(R)
   $
+]
+
+#pagebreak()
+
+#statementsp(
+  box-name: "def",
+  box-title: "",
+  box-label: "",
+  number: true
+)[
+  $R = plus.o.big_(n=0)^infinity R_n$: Hilbert-Serre 整域
+
+  #enum(
+    numbering: "(1)",
+    enum.item(1)[$dim_gr (R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": graded prime" }$],
+    enum.item(2)[$dim(R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": prime" }$],
+    enum.item(3)[$trdeg_k (R) = trdeg_k (Frac(R))$],
+    enum.item(4)[$GKdim(R) = sup_V limsup_(n -> infinity) log(d_V (n)) / log(n)$],
+    enum.item(5)[$d(R) = min{d in NN | lim_(t -> 1-0)(1-t)^d P_R (t)<infinity}$],
+  )
 ]
 
 #pagebreak()
@@ -451,6 +489,16 @@ $
 #pagebreak()
 
 #set page(header: none)
+
+#align(center + horizon)[
+  #text(size: 3em)[$zws$]
+  #figure(
+    image("../to_git.png", width: 9em),
+    caption: "資料へのリンク（GitHub）"
+  )
+]
+
+#pagebreak()
 
 #align(center + horizon)[
   #text(size: 3em)[Thank you!]

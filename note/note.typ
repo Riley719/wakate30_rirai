@@ -314,7 +314,7 @@ Hilbert-Serre 環という条件はポアンカレ級数とその極が定義で
   Type "help" to see useful commands
 
   i1 : load "computesagbi.m2"
-  (Partial SAGBIBasis Computation Object with 11 generators, Limit = 10., false, | a+b+c ab ab2 ab3+ab2c ab4+a2b2c+2ab3c+ab2c2 a2b3c ab5+a3b2c+3ab4c+2a2b2c2+3ab3c2+ab2c3 ab6+a4b2c+a2b4c+4ab5c+3a3b2c2+4a2b3c2+6ab4c2+3a2b2c3+4ab3c3+ab2c4 ab7+a5b2c+2a2b5c+5ab6c+4a4b2c2+5a3b3c2+8a2b4c2+10ab5c2+6a3b2c3+10a2b3c3+10ab4c3+4a2b2c4+5ab3c4+ab2c5 ab8+a6b2c+3a2b6c+6ab7c+5a5b2c2+6a4b3c2+9a3b4c2+14a2b5c2+15ab6c2+10a4b2c3+18a3b3c3+24a2b4c3+20ab5c3+10a3b2c4+18a2b3c4+15ab4c4+5a2b2c5+6ab3c5+ab2c6 ab9+a7b2c+4a2b7c+7ab8c+6a6b2c2+7a5b3c2+10a4b4c2+14a3b5c2+22a2b6c2+21ab7c2+15a5b2c3+28a4b3c3+41a3b4c3+48a2b5c3+35ab6c3+20a4b2c4+42a3b3c4+52a2b4c4+35ab5c4+15a3b2c5+28a2b3c5+21ab4c5+6a2b2c6+7ab3c6+ab2c7 |)
+  (Partial SAGBIBasis Computation Object with 8 generators, Limit = 7., false, | x+y+z xy xy2 xy3+xy2z xy4+x2y2z+2xy3z+xy2z2 x2y3z xy5+x3y2z+3xy4z+2x2y2z2+3xy3z2+xy2z3 xy6+x4y2z+x2y4z+4xy5z+3x3y2z2+4x2y3z2+6xy4z2+3x2y2z3+4xy3z3+xy2z4 |)
   ```
 ]
 
@@ -324,10 +324,10 @@ Hilbert-Serre 環という条件はポアンカレ級数とその極が定義で
 #showybox[
   ```
   needsPackage "SubalgebraBases"
-  R = QQ[a,b,c,MonomialOrder=>{Weights=>{1,1,0},Lex=>1}]
+  R = QQ[x,y,z,MonomialOrder=>{Weights=>{1,1,0},Lex=>1}]
 
-  P = {a+b+c,a*b,a*b^2}
-  SB = sagbi(P, Limit=>10);
+  P = {x+y+z,x*y,x*y^2}
+  SB = sagbi(P, Limit=>7);
   print(SB,isSAGBI SB,gens SB)
   ```
 ]
