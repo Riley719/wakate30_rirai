@@ -308,7 +308,7 @@
 $
   dim_gr (ini(S)) = d(ini(S)) = d(S) = dim_gr (S)
 $
-しかもネーター次数環なら$dim(R) = dim_gr (R)$なので$dim(S) = dim_gr (ini(S))$である．
+しかもネーター次数環なら$dim(R) = dim_gr (R)$なので$dim(S) = dim_(ini(S))$である．
 
 この手法を使うため，Smokeの次元定理を拡張したいという動機が生まれる．
 
