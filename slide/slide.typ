@@ -121,7 +121,7 @@
 #newstatementsp(
   box-name: "th",
   box-display: "Th",
-  title-color: black,
+  title-color: white,
   box-color: rgb("#7733FF")
 )
 #newstatementsp(
@@ -182,13 +182,25 @@
 ]
 
 #align(center)[
-  #title
+  第30回代数学若手研究集会
+  #showybox(
+    frame: (
+      body-color: blue,
+      border-color: blue,
+      radius: 20pt,
+    ),
+    [
+      #set text(fill: white)
+      #title
+    ]
+  )
 ]
 #author
 
 #figure(
-  image("../to_git.png", width: 4.1em),
-  caption: "資料へのリンク（GitHub）"
+  image("../to_git.png", width: 9em),
+  caption: "資料へのリンク（GitHub）",
+  numbering: none
 )
 
 #pagebreak()
@@ -204,7 +216,39 @@
 
 #pagebreak()
 
-= Krullの次元定理
+= 可換環の次元論
+
+$R = plus.o.big_(n=0)^infinity R_n$: $NN$-型次数環で$R_0 = k$: 体
+
+$
+  P_R (t) = sum_(n=0)^infinity dim_k (R_n) t^n in ZZ[[t]]
+$
+ポアンカレ級数
+
+#pagebreak()
+
+#statementsp(
+  box-name: "def",
+  box-title: "",
+  box-label: "",
+  number: true
+)[
+  $R = plus.o.big_(n=0)^infinity R_n$: 整域で$R_0 = k$: 体
+
+  #enum(
+    numbering: "(1)",
+    enum.item(1)[$dim_gr (R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": graded prime" }$],
+    enum.item(2)[$dim(R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": prime" }$],
+    enum.item(3)[$trdeg_k (R) = trdeg_k (Frac(R))$],
+    enum.item(4)[$GKdim(R) = sup_(V subset R) limsup_(n -> infinity) log(d_V (n)) / log(n)$],
+    enum.item(5)[$d(R) = min{d in NN | lim_(t -> 1-0)(1-t)^d P_R (t)<infinity}$],
+  )
+]
+$d_V (n) = dim_k (k + V + V^2 + dots.c + V^n)$
+
+#pagebreak()
+
+
 
 #statementsp(
   box-name: "fact",
@@ -371,26 +415,6 @@ $
 
 #pagebreak()
 
-#statementsp(
-  box-name: "def",
-  box-title: "",
-  box-label: "",
-  number: true
-)[
-  $R = plus.o.big_(n=0)^infinity R_n$: Hilbert-Serre 整域
-
-  #enum(
-    numbering: "(1)",
-    enum.item(1)[$dim_gr (R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": graded prime" }$],
-    enum.item(2)[$dim(R) = sup{r | frak(p)_0 subset.neq dots.c subset.neq frak(p)_r ": prime" }$],
-    enum.item(3)[$trdeg_k (R) = trdeg_k (Frac(R))$],
-    enum.item(4)[$GKdim(R) = sup_V limsup_(n -> infinity) log(d_V (n)) / log(n)$],
-    enum.item(5)[$d(R) = min{d in NN | lim_(t -> 1-0)(1-t)^d P_R (t)<infinity}$],
-  )
-]
-
-#pagebreak()
-
 = 応用例
 
 #statementsp(
@@ -494,7 +518,8 @@ $
   #text(size: 3em)[$zws$]
   #figure(
     image("../to_git.png", width: 9em),
-    caption: "資料へのリンク（GitHub）"
+    caption: "資料へのリンク（GitHub）",
+    numbering: none
   )
 ]
 
@@ -504,6 +529,18 @@ $
   #text(size: 3em)[Thank you!]
   #figure(
     image("../to_git.png", width: 9em),
-    caption: "資料へのリンク（GitHub）"
+    caption: "資料へのリンク（GitHub）",
+    numbering: none
   )
 ]
+
+#pagebreak()
+
+#set page(
+  margin: 0pt,
+  header: none,
+  numbering: none,
+  fill: none
+)
+
+#image("../to_git.png", width: 100%, height: 100%, fit: "contain")
