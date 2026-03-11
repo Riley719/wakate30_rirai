@@ -575,7 +575,7 @@ $
 #statementsp(
   box-name: "cor",
   box-title: "",
-  box-label: "",
+  box-label: "finitedim",
   number: true
 )[
   Hilbert-Serre 環はクルル次元有限である．
@@ -848,7 +848,7 @@ $
 #statementsp(
   box-name: "qu",
   box-title: "Best possible?-1",
-  box-label: "",
+  box-label: "q1",
   number: true
 )[
   #linksp(<th:main>)の仮定の下で$d(R) < dim(R)$となることはあるか？
@@ -864,6 +864,19 @@ $
 ]
 
 特に#linksp(<qu:q2>)について，例えば#linksp(<ex:nagata>)では$r$は$16$以上の平方数であればなんでもいい一方，$dim(R) <= 4$という制約は常に受ける．$r$が大きいときは$dim(R) < d(R)$となってしまうかもしれない．そのまた一方，$d(R)$の挙動に関係しそうな超越次数も常に$4$だから，実は常に$dim(R) = d(R) = 4$なのかもしれない．どちらにせよ興味深い．
+
+追記１（2026/03/12）:代数若手前日に少し考えたら#linksp(<qu:q1>)については肯定的に解決した。
+#pfsp[
+  $R$をHilbert-Serre 環とする。#linksp(<cor:finitedim>)よりこれはKrull次元有限。よって
+  $
+    frak(p)_0 subset.neq frak(p)_1 subset.neq dots.c subset.neq frak(p)_r
+  $
+  を$R$の素イデアルの列であって$r = dim(R)$であるものとする。$frak(p)_0$は$R$の斉次素イデアルである。よって
+  $
+    dim(R) = dim(R\/frak(p)_0) <= d(R\/frak(p)_0) <= d(R)
+  $
+  となり示せた。整域なら不等号は正しいことを用いた。
+]
 
 #pagebreak()
 
