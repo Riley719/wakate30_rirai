@@ -785,7 +785,7 @@ $
 #statementsp(
   box-name: "ex",
   box-title: "",
-  box-label: "",
+  box-label: "exofin",
   number: true
 )[
   $S = k[f_1, dots, f_m] subset R = k[x_1, dots, x_n]$を体$k$上の$n$変数多項式環と，その有限生成次数付き部分$k$代数とする．$R$に単項式順序を固定する．すると#linksp(<th:main2>)によって
@@ -851,7 +851,7 @@ $
   box-label: "q1",
   number: true
 )[
-  #linksp(<th:main>)の仮定の下で$d(R) < dim(R)$となることはあるか？
+  #linksp(<th:main>)の仮定の下で$dim(R) <= d(R)$か？
 ]
 
 #statementsp(
@@ -863,9 +863,9 @@ $
   #linksp(<th:main2>)の仮定の下で$dim(R) = d(R)$は成立するか？
 ]
 
-特に#linksp(<qu:q2>)について，例えば#linksp(<ex:nagata>)では$r$は$16$以上の平方数であればなんでもいい一方，$dim(R) <= 4$という制約は常に受ける．$r$が大きいときは$dim(R) < d(R)$となってしまうかもしれない．そのまた一方，$d(R)$の挙動に関係しそうな超越次数も常に$4$だから，実は常に$dim(R) = d(R) = 4$なのかもしれない．どちらにせよ興味深い．
+特に#linksp(<qu:q2>)について，例えば#linksp(<ex:nagata>)では$r$は$16$以上の平方数であればなんでもいい一方，$dim(R) <= 4$という制約は常に受ける．$r$が大きいときは$dim(R) > d(R)$となってしまうかもしれない．そのまた一方，$d(R)$の挙動に関係しそうな超越次数も常に$4$だから，実は常に$dim(R) = d(R) = 4$なのかもしれない．どちらにせよ興味深い．
 
-追記１（2026/03/12）:代数若手前日に少し考えたら#linksp(<qu:q1>)については肯定的に解決した。
+#text(fill: red)[追記１（2026/03/12）]:代数若手前日に少し考えたら#linksp(<qu:q1>)については肯定的に解決した。
 #pfsp[
   $R$をHilbert-Serre 環とする。#linksp(<cor:finitedim>)よりこれはKrull次元有限。よって
   $
@@ -876,6 +876,148 @@ $
     dim(R) = dim(R\/frak(p)_0) <= d(R\/frak(p)_0) <= d(R)
   $
   となり示せた。整域なら不等号は正しいことを用いた。
+]
+
+#text(fill: red)[追記2（2026/03/16）]:#linksp(<qu:q2>)の形では否定的に解決した。反例を示す。
+
+#pfsp[
+  $k$を体とする。$k(x,y)$を2変数有理関数体として，この部分代数を考える。まず$d$を$2$以上の任意の自然数とする。
+  $
+    R = plus.o.big_(n=0)^infinity R_n
+  $
+  を次のように定める。
+  $
+    R_n = "Span"_k { x^n y^j mid(|) 0 <= j <= n^d}
+  $
+  単項式であって$x$の指数が$n$であり，$y$の指数が$n^d$以下であるものすべてを$n$次だと思うということ。このようにすると$R$は次数環になり，さらに$trdeg_k (R) = 2$は明らか。また，$R$のポアンカレ級数は
+  $
+    P_R (t) = sum_(n=0)^infinity (n^d + 1) t^n
+  $
+  実はこれは有理関数で書けて$d(R) = d + 1$である。$R$はHilbert-Serre 環である。$d >= 2$より
+  $
+    dim(R) <= trdeg_k (R) = 2 < d + 1 = d(R)
+  $
+  となり，等式ではない。
+]
+
+この反例は$trdeg_k (R)$と$d(R)$はいくらでも離すことができることさえ与える。
+
+#pagebreak()
+
+= 当日に出た質問とその答え
+このセクションでは代数若手当日発表直後に出た質問と，当日の私の答え，現在の正確な答えをまとめる。質問者名は伏せる。
+
+#statementsp(
+  box-name: "qu",
+  box-title: "",
+  box-label: "q3",
+  number: true
+)[
+  #linksp(<ex:exofin>)の例で，イニシャル代数をとるとき，クルル次元が真に減ることはあるのか？
+]
+#pfsp[
+  (当日の答え)\
+  私が知りたい。イニシャルがネーター環になるときは変わらない。さらにこのときはdeformation理論さえあるが，一般の場合だとクルル次元が真に下がる例は見つけていない。数値実験するとほとんどの場合変わらないとわかる。
+
+  (現在の答え)\
+  ない。常にイコールになる。証明する。まずは次を示す。
+  $
+    trdeg_k (S) <= trdeg_k (ini(S))
+  $
+  これらは有限値であることに注意。$m = trdeg_k (ini(S))$とおく。$ini(S)$は$M subset NN^n$なるとあるモノイド$M$のモノイド環である。$ini(S) = k[M]$と表せる。$M$のGrothendieck群を$G$とする。$G$は自由アーベル群なのでそのランクを$g$とすると
+  $
+    k[G] cong k[t_1^(plus.minus 1), dots, t_g^(plus.minus 1)]
+  $
+  となる。$k[G] subset "Frac"(k[M])$が簡単にわかるので
+  $
+    g = trdeg_k (k[G]) = trdeg_k (k[M]) = trdeg_k (ini(S)) = m
+  $
+  となる。$ini(S)$を次数分解して次を得たとする。
+  $
+    ini(S) = plus.o.big_(n=0)^infinity ini(S)_n
+  $
+  ここで自然数$N >= 1$に対して
+  $
+    A(N) = sum_(n=0)^N dim_k (ini(S)_n)
+  $
+  とおく。
+  $
+    (P_(ini(S)) (t))/(1-t) = sum_(N=0)^infinity A(N) t^N
+  $
+  に注意。$M subset NN^n$や$G subset ZZ^n$などを自然な方法で$RR^n$というベクトル空間の部分集合と考える。$G$が生成する部分空間を$V = G times.o_ZZ RR$と書くと，先ほどの議論からこの次元は$m$である。$e_1, dots, e_m in G$を基底とする。ここで
+  $
+    P_N = {alpha = (alpha_1, dots, alpha_n) in RR^n mid(|) alpha in V, 0 <= forall alpha_i, sum_(i=1)^n alpha_i <= N}
+  $
+  とおく。明らかに$P_N$の格子点の個数は$A(N)$の上界を与える。$P_N = N P_1$である。ここで$beta in P_1$とする。$beta in V$であるので
+  $
+    beta = y_1 e_1 + dots.c + y_m e_m
+  $
+  と表せる。$P_1$は有界だから，$y$たちに依存しない大きな定数$K$を用いて$|y_j| <= K$とできる。$alpha in P_N$をとると
+  $
+    1/N alpha = z_1/N e_1 + dots.c + z_m/N e_m in P_1
+  $
+  である。よって$|z_j| <= K N$である。$z$たちが整数であるとき，かつそのときに限り$alpha in G$である。このような整数は高々$2K N +1$個である。ゆえに格子点になるような$alpha$の個数は高々$(2K N + 1)^m$個である。よって
+  $
+    A(N) <= (2K N + 1)^m <= (2K+1)^m N^m
+  $
+  つまり，定数$C$をとって$A(N) <= C N^m$とできることがわかる。ゆえに
+  $
+    (P_(ini(S)) (t))/(1-t) = sum_(N=0)^infinity A(N) t^N <= C sum_(N=0)^infinity N^m t^N
+  $
+  一番右の級数は$t=1$での極の位数が$m+1$であることが知られている。ゆえに$d(ini(S)) <= m = trdeg_k (ini(S))$である。#linksp(<th:main2>)と合わせて$trdeg_k (ini(S)) = d(ini(S))$である。
+
+  #linksp(<th:gilmer>)と合わせて
+  $
+    dim(ini(S)) = dim(k[M]) = dim(k[G]) = m = trdeg_k (ini(S)) = d(ini(S)) = d(S) = dim(S)
+  $
+  となり示された。
+]
+
+この結果からイニシャル代数においてなら#linksp(<th:main2>)の不等式は
+$
+  dim(ini(S)) = trdeg_k (ini(S)) = GKdim_k (ini(S)) = d(ini(S))
+$
+としてよいことがわかる。Smokeの次元定理はイニシャル代数の場合に一般化できる。
+
+#statementsp(
+  box-name: "qu",
+  box-title: "",
+  box-label: "q4",
+  number: true
+)[
+  #linksp(<qu:q1>)はどの程度成立しそうか？
+]
+#pfsp[
+  (当日の答え)\
+  実は昨日計算していたら示せたと思う。
+
+  (現在の答え)\
+  同じ。#linksp(<qu:q2>)付近に追記した。
+]
+
+#statementsp(
+  box-name: "qu",
+  box-title: "",
+  box-label: "q5",
+  number: true
+)[
+  多項式環の部分環や商以外でHilbert-Serre環になるような例などはあるか。
+]
+#pfsp[
+  (当日の答え)\
+  ある。実はずるい例がある。例えば$k$を体として$a_1, a_2, dots$を任意の自然数とする。
+  $
+    R_n = k^(plus.o a_n)
+  $
+  と定め，$M = plus.o.big_(n=1)^(infinity) R_n$とおく。
+  $
+    R = k times.r M
+  $
+  というイデアル化を考えると，これは自然に次数環になり，$dim(R) = 0$である。しかも
+  $
+    P_R (t) = sum_(n=0)^(infinity) a_n t^n
+  $
+  となり，狙ったポアンカレ級数になるような次数環を作れる。これにより#linksp(<th:main>)などは等式になるとは限らず，いくらでも離すことができることもわかる。
 ]
 
 #pagebreak()
