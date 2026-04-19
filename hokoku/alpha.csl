@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>Alpha Style (LaTeX compliant)</title>
+    <id>http://www.zotero.org/styles/alpha-style-typst</id>
+    <updated>2026-02-12T00:00:00+00:00</updated>
+    <author>
+      <name>Rirai Special's Assistant</name>
+    </author>
+  </info>
+
+  <citation>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-label"/>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout>
+      <text variable="citation-label" prefix="[" suffix="] "/>
+      
+      <group delimiter=". " suffix=".">
+        <names variable="author">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize="false" name-as-sort-order="all"/>
+          <label form="short" prefix=" (" suffix=")"/>
+          <substitute>
+            <names variable="editor"/>
+            <text variable="title"/>
+          </substitute>
+        </names>
+
+        <choose>
+          <if type="book report thesis" match="any">
+            <text variable="title" font-style="italic"/>
+          </if>
+          <else>
+            <text variable="title"/>
+          </else>
+        </choose>
+
+        <text variable="container-title" font-style="italic"/>
+
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+
+        <group delimiter=" ">
+           <label variable="page" form="short"/>
+           <text variable="page"/>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>
